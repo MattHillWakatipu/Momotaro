@@ -75,3 +75,8 @@ DerivedDataCache/*
 
 # Starter Content
 Content/StarterContent/*
+
+# Unimported image files
+*.png
+*.jpg
+*.jpeg
