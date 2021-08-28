@@ -7,15 +7,14 @@
 // Sets default values
 AMainPlayer::AMainPlayer()
 {
-	
+	AYokai* Dog = NewObject<AYokai>();
+	CurrentYokai = Dog;
 }
 
 // Called when the game starts or when spawned
 void AMainPlayer::BeginPlay()
 {
 	Super::BeginPlay();
-	AYokai* Dog = NewObject<AYokai>();
-	CurrentYokai = Dog;
 
 }
 
@@ -34,7 +33,7 @@ void AMainPlayer::DrawCards(int NumOfCardsToDraw)
 	srand(time(0));
 	for (int i = 0; i < NumOfCardsToDraw; i++) {
 		int randNum = rand() % (CurrentYokai->CardPile.Num());
-		CurrentYokai->Hand.Add(CurrentYokai->CardPile[0]);
+		CurrentYokai->Hand.Add(CurrentYokai->CardPile[randNum]);
 		CurrentYokai->CardPile.RemoveAt(randNum);
 	}
 }

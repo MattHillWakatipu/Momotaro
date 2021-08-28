@@ -21,6 +21,34 @@ enum ValueType
 	Heal,
 };
 
+
+UENUM(BlueprintType)
+enum Cards
+{
+	AokijisMight,
+	AinkusFury,
+};
+
+
+UENUM(BlueprintType)
+enum CardRarity
+{
+	Common,
+	Uncommon,
+	Rare,
+	Epic,
+	Fabled,
+};
+
+UENUM(BlueprintType)
+enum CardTier
+{
+	Bronze,
+	Silver,
+	Gold,
+};
+
+
 UCLASS()
 class MOMOTARO_API ACard : public AActor
 {
@@ -30,26 +58,29 @@ public:
 	// Sets default values for this actor's properties
 	ACard();
 
-	UPROPERTY(BlueprintReadWrite)
 	TSubclassOf<ACard> Blueprint;
 
-protected:
 	// Name of the card
-	string Name;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TEnumAsByte<Cards> Name;
 
 	// Cost of the card
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
 	int Cost;
 
 	// The Rarity of the card - Common (0), Uncommon (1), Rare (2) or Special (3)
-	int Rarity;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TEnumAsByte<CardRarity> Rarity;
 
 	// The Tier / Level of the card - Bronze (0), Silver (1) or Gold (2)
-	int Tier;
+	UPROPERTY(BlueprintReadWrite, EditAnywhere)
+	TEnumAsByte<CardTier> Tier;
 
 	// Card values
-	map<ValueType, int> ValueMap;
+	TMap<ValueType, int> ValueMap;
 
-	// Value types
+	// Map of blueprints
+	TMap<TEnumAsByte<Cards>, TSubclassOf<ACard>> BlueprintMap;
 
 protected:
 
@@ -61,6 +92,5 @@ public:
 	int GetValue(ValueType Type);
 
 	UFUNCTION(BlueprintCallable)
-	TSubclassOf<ACard> GetBlueprint();
-
+	TMap<TEnumAsByte<Cards>, TSubclassOf<ACard>> GetMap();
 };

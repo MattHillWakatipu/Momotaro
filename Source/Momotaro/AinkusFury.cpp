@@ -6,14 +6,20 @@
 // Sets default values
 AAinkusFury::AAinkusFury()
 {
-	static ConstructorHelpers::FObjectFinder<UClass> FloorCellClassFinder(TEXT("Blueprint'/Game/AinkusFury.AinkusFury_C'"));
-	Blueprint = FloorCellClassFinder.Object;
+	Name = AinkusFury;
+	Cost = 2;
+	Rarity = Common;
+	Tier = Bronze;
+}
 
+// Called when the game starts or when spawned
+void AAinkusFury::BeginPlay()
+{
+	Super::BeginPlay();
 }
 
 // Called when the game starts or when spawned
 void AAinkusFury::SetValues(int AttackValue)
 {
-	ValueMap.insert(pair<ValueType, int>(Attack, AttackValue));
-
+	ValueMap.Add(Attack, AttackValue);
 }

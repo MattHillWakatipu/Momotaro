@@ -18,6 +18,8 @@ public:
 
 	AAinkusFury();
 
+	void BeginPlay() override;
+
 	UFUNCTION(BlueprintCallable)
 	void SetValues(int AttackValue);
 };
