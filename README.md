@@ -7,3 +7,9 @@ The game has main level which is just the main menu widgets. Play will take you 
 ## How To Play
 
 To play the game clone this repository, open it in Unreal 4.26.2 (requires Visual Studio), build each seperate level file and click run in new window. Unfortunately last minute packing the executable failed, it would start but you would be stuck at the menu.
+
+## Momotaro Gameplay Video
+https://youtu.be/fMqnAIyBToI
+
+## Code Structure Discussion
+https://youtu.be/TN2iozC9gYM
